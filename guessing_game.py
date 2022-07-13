@@ -12,16 +12,12 @@ def start_game(scores_list):
     max_number = get_difficulty()
 
     if len(scores_list) > 0:
-        high_score = min(scores_list)
+        print(f"\nThe current high score is {min(scores_list)}\n")
     else:
-        high_score = max_number
-
-    print(f"""
-You have to guess a number between 1 and {max_number}.
-The current high score is {high_score}.
-""")
+        print("\nThere's no high score yet.\n")
 
     random_number = random.randint(1, max_number)
+    print(random_number)
 
     while True:
         try:
@@ -41,12 +37,14 @@ The current high score is {high_score}.
                 print("It's higher.")
                 continue
             else:
-                print(f"\nYou got it! It took you {tries} tries.")
-                if high_score == None or tries < high_score:
-                    high_score = tries
-                    print(f"You set a new high score of {high_score} tries!")
-
+                singular = "try" if tries == 1 else "tries"
+                print(
+                    f'Got it! It took you {tries} {singular} to guess the number {random_number}.')
+                if len(scores_list) == 0 or tries < min(scores_list):
+                    print(
+                        f"You set a new high score of {tries} {singular}! 🔥")
                 scores_list.append(tries)
+
                 print_scores()
                 break
 
@@ -80,7 +78,7 @@ Please choose a difficulty level:
 def print_scores():
     print(f"""
 Statistics:
-You have played {len(scores_list)} games.
+You have played {len(scores_list)} {"game" if len(scores_list) == 1 else "games"}.
 
 Your average score is {mean(scores_list):.2f} tries.
 Your median score is {median(scores_list)} tries.
