@@ -17,7 +17,6 @@ def start_game(scores_list):
         print("\nThere's no high score yet.\n")
 
     random_number = random.randint(1, max_number)
-    print(random_number)
 
     while True:
         try:
