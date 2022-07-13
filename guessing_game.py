@@ -1,7 +1,8 @@
 import random
+from statistics import mean, median, mode
 
 
-def start_game(high_score=None):
+def start_game(high_score=None, scores_list=[]):
 
     print("Welcome to the number guessing game!")
 
@@ -13,7 +14,7 @@ You have to guess a number between 1 and {max_number}.
 The current high score is {high_score or max_number}.
 """)
 
-    answer = random.randint(1, max_number)
+    random_number = random.randint(1, max_number)
 
     while True:
         try:
@@ -26,17 +27,20 @@ The current high score is {high_score or max_number}.
             continue
         else:
             tries += 1
-            if guess > answer:
+            if guess > random_number:
                 print("It's lower.")
                 continue
-            elif guess < answer:
+            elif guess < random_number:
                 print("It's higher.")
                 continue
             else:
-                print(f"You got it! It took you {tries} tries.")
+                print(f"\nYou got it! It took you {tries} tries.")
                 if high_score == None or tries < high_score:
                     high_score = tries
                     print(f"You set a new high score of {high_score} tries!")
+
+                scores_list.append(tries)
+                print_scores(scores_list)
                 break
 
     restart_game(high_score)
@@ -47,6 +51,7 @@ def restart_game(high_score):
         restart = input("Do you want to play again? (y/n): ")
         if restart.lower() == "y":
             start_game(high_score)
+            break
         elif restart.lower() == "n":
             print("Thanks for playing!")
             break
@@ -55,17 +60,31 @@ def restart_game(high_score):
             continue
 
 
+def print_scores(scores_list):
+    print(f"""
+Data:
+Mean: {mean(scores_list)}
+Median: {median(scores_list)}
+Mode: {mode(scores_list)}
+""")
+
+
 def get_difficulty():
     max_number = 100
 
-    difficulty = input("Please choose a difficulty level (easy/medium/hard): ")
-    if difficulty.lower() == "easy":
+    difficulty = int(input("""
+Please choose a difficulty level:
+1. Easy (1-10)
+2. Medium (1-100)
+3. Hard (1-1000)
+> """))
+    if difficulty == 1:
         max_number = 10
-    elif difficulty.lower() == "medium":
+    elif difficulty == 2:
         max_number = 100
-    elif difficulty.lower() == "hard":
+    elif difficulty == 3:
         max_number = 1000
-    elif difficulty.lower() == "impossible":
+    elif difficulty == 4:
         print("You asked for it... 🤷")
         max_number = 10000
     else:
