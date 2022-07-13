@@ -1,6 +1,6 @@
 # <img src="https://treehouse-techdegree.s3.amazonaws.com/code-adventures/assets/treehouse-logo.svg" width="22"/> Team Treehouse - WebApp Dashboard
 
-This is my first project for the [Data Analysis Techdegree at Treehouse](https://teamtreehouse.com/techdegree/data-analysis) at which was tasked with creating a Number Guessing Terminal game.
+This is my first project for the [Data Analysis Techdegree at Treehouse](https://teamtreehouse.com/techdegree/data-analysis) at which was tasked with creating a Terminal based Number Guessing game.
 
 ## Table of contents
 
