@@ -1,17 +1,24 @@
 import random
 from statistics import mean, median, mode
 
+scores_list = []
 
-def start_game(high_score=None, scores_list=[]):
+
+def start_game(scores_list):
 
     print("Welcome to the number guessing game!")
 
     tries = 0
     max_number = get_difficulty()
 
+    if len(scores_list) > 0:
+        high_score = min(scores_list)
+    else:
+        high_score = max_number
+
     print(f"""
 You have to guess a number between 1 and {max_number}.
-The current high score is {high_score or max_number}.
+The current high score is {high_score}.
 """)
 
     random_number = random.randint(1, max_number)
@@ -40,33 +47,10 @@ The current high score is {high_score or max_number}.
                     print(f"You set a new high score of {high_score} tries!")
 
                 scores_list.append(tries)
-                print_scores(scores_list)
+                print_scores()
                 break
 
-    restart_game(high_score)
-
-
-def restart_game(high_score):
-    while True:
-        restart = input("Do you want to play again? (y/n): ")
-        if restart.lower() == "y":
-            start_game(high_score)
-            break
-        elif restart.lower() == "n":
-            print("Thanks for playing!")
-            break
-        else:
-            print("Please enter a valid answer.")
-            continue
-
-
-def print_scores(scores_list):
-    print(f"""
-Data:
-Mean: {mean(scores_list)}
-Median: {median(scores_list)}
-Mode: {mode(scores_list)}
-""")
+    restart_game()
 
 
 def get_difficulty():
@@ -93,4 +77,29 @@ Please choose a difficulty level:
     return max_number
 
 
-start_game()
+def print_scores():
+    print(f"""
+Statistics:
+You have played {len(scores_list)} games.
+
+Your average score is {mean(scores_list):.2f} tries.
+Your median score is {median(scores_list)} tries.
+Your mode score is {mode(scores_list)} tries.
+""")
+
+
+def restart_game():
+    while True:
+        restart = input("Do you want to play again? (y/n): ")
+        if restart.lower() == "y":
+            start_game(scores_list)
+            break
+        elif restart.lower() == "n":
+            print("Thanks for playing!")
+            break
+        else:
+            print("Please enter a valid answer.")
+            continue
+
+
+start_game(scores_list)
