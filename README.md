@@ -58,7 +58,7 @@ To run this project you can simply download the repo by clicking the green "Down
 
 ### What I learned
 
-I've learned so much while creating this project as this was the point where everything in terms of HTML / CSS and JavaScript came together for me. The most difficult parts were the autocomplete functionality and the local storage. I learned how to use local storage to save the settings and display those settings upon reloading the page.
+It has been a while since I last wrote any Python code so definitely needed a refresher! I relearned about lists, conditionals and loops and got used to the syntax again pretty quickly. One new thing I learned was about the statistics module and the methods that it provides making me look forward to the upcoming units and projects in the Data Analysis Techdegree!
 
 ### Continued development
 
@@ -69,7 +69,7 @@ In the future I'd like to improve this project to include:
 
 ### Resources
 
-- [Treehouse - Introducing Lists](https://teamtreehouse.com/library/introducing-lists) - I found this course very helpful to understand interacting with lists and how to build while loops.
+- [Treehouse: Introducing Lists](https://teamtreehouse.com/library/introducing-lists) - I found this course very helpful to understand interacting with lists and how to build while loops.
 - [Blog on f-strings](https://towardsdatascience.com/five-wonderful-uses-of-f-strings-in-python-7980cfd31c0d) - I used the information from this blog to add conditionals to my f-strings
 
 ## Author
