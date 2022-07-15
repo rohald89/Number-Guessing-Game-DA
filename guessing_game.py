@@ -53,25 +53,30 @@ def start_game(scores_list):
 def get_difficulty():
     max_number = 100
 
-    difficulty = int(input("""
+    while True:
+        try:
+            difficulty = int(input("""
 Please choose a difficulty level:
 1. Easy (1-10)
 2. Medium (1-100)
 3. Hard (1-1000)
 > """))
-    if difficulty == 1:
-        max_number = 10
-    elif difficulty == 2:
-        max_number = 100
-    elif difficulty == 3:
-        max_number = 1000
-    elif difficulty == 4:
-        print("You asked for it... 🤷")
-        max_number = 10000
-    else:
-        print("Please enter a valid difficulty level.")
-        get_difficulty()
-    return max_number
+        except ValueError:
+            print("\nPlease enter a number.")
+            continue
+        if difficulty == 1:
+            max_number = 10
+        elif difficulty == 2:
+            max_number = 100
+        elif difficulty == 3:
+            max_number = 1000
+        elif difficulty == 4:
+            print("You asked for it... 🤷")
+            max_number = 10000
+        else:
+            print("\nPlease enter a valid difficulty level.")
+            continue
+        return max_number
 
 
 def print_scores():
